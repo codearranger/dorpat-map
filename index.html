@@ -52,6 +52,16 @@
   .popup-source { font-size: 11px; color: #7a5a2a; margin-bottom: 4px; font-style: italic; }
   .popup-loc { font-size: 12px; color: #5a3f1a; margin-bottom: 5px; }
   .popup-summary { font-size: 12px; line-height: 1.4; color: #3a2b15; max-height: 140px; overflow-y: auto; }
+  .popup-link { display: block; text-decoration: none; color: inherit; cursor: pointer; }
+  .popup-link:hover .popup-title { text-decoration: underline; }
+  .popup-link:hover .popup-img { box-shadow: 0 0 0 2px #8b2e1c; }
+  .popup-cta {
+    margin-top: 8px; padding-top: 6px; border-top: 1px dotted #b79a6c;
+    font-size: 12px; color: #8b2e1c; font-weight: 600; text-align: center;
+  }
+  .popup-link:hover .popup-cta { color: #5a1c0a; }
+  /* Let the inner summary scroll without hijacking the outer click */
+  .popup-summary { cursor: text; }
   /* Sepia map overlay */
   .sepia-tiles {
     filter: sepia(0.75) saturate(1.05) hue-rotate(-10deg) contrast(0.95) brightness(1.05);
@@ -153,13 +163,17 @@ function popupHTML(f) {
   const imgSrc = `thumbs/${f.id}.jpg`;
   const summary = (f.summary || '').replace(/</g, '&lt;').substring(0, 600);
   const bk = bookNames[f.book];
+  const pdfHref = `books/Now-Then-${f.book}-Dorpat.pdf#page=${f.start_page}`;
   return `
-    <img class="popup-img" src="${imgSrc}" alt="${f.title}" loading="lazy"
-         onerror="this.style.display='none'"/>
-    <div class="popup-title">${f.title}</div>
-    <div class="popup-source">${bk} · Feature ${f.feature} · p. ${f.start_page}–${f.end_page}</div>
-    <div class="popup-loc">📍 ${f.location}</div>
-    <div class="popup-summary">${summary}${summary.length >= 600 ? '…' : ''}</div>
+    <a class="popup-link" href="${pdfHref}" target="_blank" rel="noopener" title="Open page ${f.start_page} in ${bk}">
+      <img class="popup-img" src="${imgSrc}" alt="${f.title}" loading="lazy"
+           onerror="this.style.display='none'"/>
+      <div class="popup-title">${f.title}</div>
+      <div class="popup-source">${bk} · Feature ${f.feature} · p. ${f.start_page}–${f.end_page}</div>
+      <div class="popup-loc">📍 ${f.location}</div>
+      <div class="popup-summary">${summary}${summary.length >= 600 ? '…' : ''}</div>
+      <div class="popup-cta">📖 Open page ${f.start_page} in the book ↗</div>
+    </a>
   `;
 }
 
