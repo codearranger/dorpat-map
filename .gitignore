@@ -6,3 +6,4 @@ node_modules/
 # Copyrighted source PDFs — kept locally for in-browser page jumping,
 # never published to GitHub Pages.
 books/*.pdf
+.sync-test
