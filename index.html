@@ -77,8 +77,9 @@
     background: #2f5d3a !important; border: 2px solid #f3ead5;
     width: 10px !important; height: 10px !important;
   }
-  .pin-archive-addr  { background: #1f4e7a !important; border: 2px solid #f3ead5; width: 11px !important; height: 11px !important; }
-  .pin-archive-place { background: #6b8aaa !important; border: 2px solid #f3ead5; width: 9px  !important; height: 9px  !important; opacity: 0.85; }
+  .pin-archive-addr   { background: #1f4e7a !important; border: 2px solid #f3ead5; width: 11px !important; height: 11px !important; }
+  .pin-archive-place  { background: #6b8aaa !important; border: 2px solid #f3ead5; width: 9px  !important; height: 9px  !important; opacity: 0.85; }
+  .pin-archive-approx { background: #a8b8cc !important; border: 2px solid #f3ead5; width: 8px  !important; height: 8px  !important; opacity: 0.7; }
   .pin-book-extra    { background: #6b3f9c !important; border: 2px solid #f3ead5; width: 12px !important; height: 12px !important; transform: rotate(45deg); border-radius: 2px !important; }
   .pin {
     width: 14px; height: 14px; border-radius: 50%;
@@ -119,7 +120,7 @@
 <div id="app">
   <div id="sidebar">
     <h1>Seattle Now &amp; Then</h1>
-    <div class="sub">303 features from Paul Dorpat's three <em>Now &amp; Then</em> volumes (1984–1990), 358 entries from his web archive (2008–2018), 36 hand-curated locations from <em>Illustrated History of the Seattle Waterfront</em> (2005) and <em>Building Washington</em> (1998), plus 516 City of Seattle designated landmarks.</div>
+    <div class="sub">303 features from Paul Dorpat's three <em>Now &amp; Then</em> volumes (1984–1990), all 503 entries from his web archive (2008–2018), 36 hand-curated locations from <em>Illustrated History of the Seattle Waterfront</em> (2005) and <em>Building Washington</em> (1998), plus 516 City of Seattle designated landmarks.</div>
     <input type="text" class="search" id="q" placeholder="Search title or location…" />
     <div class="layer-row">
       <label><input type="checkbox" id="dorpatToggle" checked>
@@ -148,8 +149,9 @@
   <span class="sw" style="background:#c47a2b"></span>approximate<br/>
   <span class="sw" style="background:#a89278"></span>neighborhood<br/>
   <b style="margin-top:5px">Web archive</b>
-  <span class="sw" style="background:#1f4e7a"></span>geocoded address<br/>
-  <span class="sw" style="background:#6b8aaa"></span>named place / nbhd<br/>
+  <span class="sw" style="background:#1f4e7a"></span>address / cross-st<br/>
+  <span class="sw" style="background:#6b8aaa"></span>named place (title)<br/>
+  <span class="sw" style="background:#a8b8cc"></span>approx (from body)<br/>
   <b style="margin-top:5px">Other Dorpat books</b>
   <span class="sw" style="background:#6b3f9c;border-radius:2px;transform:rotate(45deg)"></span>Waterfront / Building WA<br/>
   <b style="margin-top:5px">Landmarks</b>
@@ -276,9 +278,17 @@ const archiveIconAddr = L.divIcon({
   className: '', html: '<div class="pin pin-archive-addr"></div>',
   iconSize: [11, 11], iconAnchor: [5, 5], popupAnchor: [0, -6],
 });
+const archiveIconCross = L.divIcon({
+  className: '', html: '<div class="pin pin-archive-addr"></div>',
+  iconSize: [11, 11], iconAnchor: [5, 5], popupAnchor: [0, -6],
+});
 const archiveIconPlace = L.divIcon({
   className: '', html: '<div class="pin pin-archive-place"></div>',
   iconSize: [9, 9], iconAnchor: [4, 4], popupAnchor: [0, -5],
+});
+const archiveIconApprox = L.divIcon({
+  className: '', html: '<div class="pin pin-archive-approx"></div>',
+  iconSize: [8, 8], iconAnchor: [4, 4], popupAnchor: [0, -5],
 });
 const archiveMarkers = [];
 function archivePopup(a) {
@@ -288,7 +298,10 @@ function archivePopup(a) {
   const pretty = dt.length === 10 ? `${months[dt.slice(5,7)]||''} ${dt.slice(8,10)}, ${dt.slice(0,4)}` : dt;
   const img = a.i ? `<img class="popup-img" src="${a.i}" alt="${a.t}" loading="lazy" onerror="this.style.display='none'"/>` : '';
   const excerpt = a.x ? `<div class="popup-summary">${a.x.replace(/</g,'&lt;')}</div>` : '';
-  const conf = a.c === 'addr' ? 'geocoded address' : 'approximate (named place)';
+  const conf = a.c === 'addr' ? 'geocoded address'
+             : a.c === 'cross' ? 'cross-street'
+             : a.c === 'place' ? 'named place (from title)'
+             : 'approximate (best guess from article body)';
   return `
     <a class="popup-link" href="${a.u}" target="_blank" rel="noopener" title="Open archive entry">
       <div class="popup-title">${a.t}</div>
@@ -300,7 +313,10 @@ function archivePopup(a) {
   `;
 }
 ARCHIVE.forEach((a, i) => {
-  const icon = a.c === 'addr' ? archiveIconAddr : archiveIconPlace;
+  let icon;
+  if (a.c === 'addr' || a.c === 'cross') icon = archiveIconAddr;
+  else if (a.c === 'place_approx')        icon = archiveIconApprox;
+  else                                     icon = archiveIconPlace;
   const m = L.marker([a.lat, a.lon], { icon: icon, title: a.t });
   m.bindPopup(archivePopup(a), { maxWidth: 360 });
   archiveMarkers[i] = m;

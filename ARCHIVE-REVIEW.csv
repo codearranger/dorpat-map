@@ -1,146 +1,64 @@
-date,title,why,url
-2008-09-14,Seattle's Front Street,no obvious address or named place,http://pauldorpat.com/?page_id=1765
-2008-09-28,Freeway Park Dances,no obvious address or named place,http://pauldorpat.com/?page_id=2143
-2009-01-18,"""I am blind""",no obvious address or named place,http://pauldorpat.com/?page_id=1710
-2009-02-15,Militia at Main Street,no obvious address or named place,http://pauldorpat.com/?page_id=2063
-2009-02-22,Occidental's Tourist Hotel,no obvious address or named place,http://pauldorpat.com/?page_id=2166
-2009-04-05,Auburn Sweet Auburn,no obvious address or named place,http://pauldorpat.com/?page_id=3020
-2009-04-25,Forty-five Years of Freeway,meta/anniversary post (no specific location),http://pauldorpat.com/?page_id=3031
-2009-05-24,Entering the A-Y-P,no obvious address or named place,http://pauldorpat.com/?page_id=3452
-2009-06-14,Childhaven,no obvious address or named place,http://pauldorpat.com/?page_id=3577
-2009-06-28,The Mount Vernon Ferry,no obvious address or named place,http://pauldorpat.com/?p=3715
-2009-07-12,Military Discipline at the AYPE,no obvious address or named place,http://pauldorpat.com/?p=3808
-2009-08-30,The Pantages-Palomar,no obvious address or named place,http://pauldorpat.com/?p=4142
-2009-09-20,'Seeing Seattle',no obvious address or named place,http://pauldorpat.com/?p=4258
-2009-10-11,Auto Row,no obvious address or named place,http://pauldorpat.com/?p=4416
-2009-10-25,Portland Now & Then,outside Seattle (Portland),http://pauldorpat.com/?p=4533
-2009-11-22,Friends of the Market,no obvious address or named place,http://pauldorpat.com/?p=4860
-2009-12-06,The Naramore Fountain,no obvious address or named place,http://pauldorpat.com/?p=4990
-2009-12-13,English Gardens at Chittenden Locks,no obvious address or named place,http://pauldorpat.com/?p=5215
-2010-01-03,"""Testing Cedar River Water""",no obvious address or named place,http://pauldorpat.com/?p=5558
-2010-01-24,Built Around the Organ,no obvious address or named place,http://pauldorpat.com/?p=5739
-2010-02-28,Horse Meat Anytime,no obvious address or named place,http://pauldorpat.com/?p=6142
-2010-03-20,City Archives Silver Anniversary,no obvious address or named place,http://pauldorpat.com/?p=6366
-2010-05-01,6th and Marion,no obvious address or named place,http://pauldorpat.com/seattle-now-and-then/seattle-now-then-6th-and-marion/
-2010-05-30,The Neely Mansion,no obvious address or named place,http://pauldorpat.com/seattle-now-and-then/seattle-now-then-the-neely-mansion-kent/
-2010-08-22,The Seattle Speed Bowl,no obvious address or named place,http://pauldorpat.com/seattle-now-and-then/seattle-now-then-the-seattle-speed-bowl/
-2010-09-11,The Central Bus Terminal,no obvious address or named place,http://pauldorpat.com/seattle-now-and-then/seattle-now-then-the-central-bus-terminal/
-2010-10-16,East on Pine,no obvious address or named place,http://pauldorpat.com/seattle-now-and-then/seattle-now-then-east-on-pine/
-2010-11-06,The Startup Baptists,no obvious address or named place,http://pauldorpat.com/seattle-now-and-then/seattle-now-then-the-startup-baptists/
-2010-11-27,Street Photography,no obvious address or named place,http://pauldorpat.com/seattle-now-and-then/seattle-now-then-street-photography/
-2010-12-04,Gothic Row on Western,no obvious address or named place,http://pauldorpat.com/seattle-now-and-then/seattle-now-then-gothic-row-on-western/
-2010-12-11,Fort Lawton Barracks,no obvious address or named place,http://pauldorpat.com/seattle-now-and-then/seattle-now-then-fort-lawton-barracks/
-2010-12-25,The Labor Temple,no obvious address or named place,http://pauldorpat.com/seattle-now-and-then/seattle-now-then-the-labor-temple/
-2011-01-08,Seattle City Light,no obvious address or named place,http://pauldorpat.com/seattle-now-and-then/seattle-now-then-seattle-city-light/
-2011-05-14,Front Street Show Strip,no obvious address or named place,http://pauldorpat.com/seattle-now-and-then/seattle-now-then-front-street-show-strip/
-2011-05-21,Madison Trolley Accident,no obvious address or named place,http://pauldorpat.com/seattle-now-and-then/seattle-now-then-madison-trolley-accident/
-2011-05-28,A Saved Victorian – The Brewer House,no obvious address or named place,http://pauldorpat.com/seattle-now-and-then/seattle-now-then-a-saved-victorian-the-brewer-house/
-2011-06-04,We Come in Peace,no obvious address or named place,http://pauldorpat.com/seattle-now-and-then/seattle-now-then-we-come-in-peace/
-2011-06-11,Where's the Beef?,no obvious address or named place,http://pauldorpat.com/seattle-now-and-then/seattle-now-then-wheres-the-beef/
-2011-06-25,Biker's Choice,no obvious address or named place,http://pauldorpat.com/seattle-now-and-then/seattle-now-then-bikers-choice/
-2011-08-14,Seattle Then & Now: The GRANITE FALLS STATION,no obvious address or named place,http://pauldorpat.com/seattle-now-and-then/seattle-then-now-the-granite-falls-station/
-2011-09-10,Luna Park Entrance,no obvious address or named place,http://pauldorpat.com/seattle-now-and-then/seattle-now-then-luna-park-entrance/
-2011-10-01,The First Presbyterians,no obvious address or named place,http://pauldorpat.com/seattle-now-and-then/seattle-now-then-the-first-presbyterians/
-2011-10-16,Centralia Depot,no obvious address or named place,http://pauldorpat.com/seattle-now-and-then/seattle-now-then-centralia-depot/
-2011-11-19,"""New Land, North of the Columbia""",no obvious address or named place,http://pauldorpat.com/seattle-now-and-then/seattle-now-then-new-land-north-of-the-columbia/
-2011-12-10,"""Before Seattle Rocked""",no obvious address or named place,http://pauldorpat.com/seattle-now-and-then/seattle-now-then-before-seattle-rocked/
-2011-12-24,the Jackson Street Regrade,no obvious address or named place,http://pauldorpat.com/seattle-now-and-then/seattle-now-then-the-jackson-street-regrade/
-2011-12-31,Genealogy,no obvious address or named place,http://pauldorpat.com/seattle-now-and-then/seattle-now-then-genealogy/
-2012-01-21,Coming Home to Riverside,no obvious address or named place,http://pauldorpat.com/seattle-now-and-then/seattle-now-then-coming-home-to-riverside/
-2012-02-18,Governor Martin's Starvation Camp,no obvious address or named place,http://pauldorpat.com/seattle-now-and-then/seattle-now-then-governor-martins-starvation-camp/
-2012-04-01,A Golden Rule for April Fools,no obvious address or named place,http://pauldorpat.com/seattle-now-and-then/seattle-now-then-a-golden-rule-for-april-fools/
-2012-04-07,-Seattle Now & Then: The Nine Millionth Visitor,no obvious address or named place,http://pauldorpat.com/seattle-now-and-then/seattle-now-then-the-nine-millionth-visitor/
-2012-05-26,The Wilkes Theatre,no obvious address or named place,http://pauldorpat.com/seattle-now-and-then/seattle-now-then-the-wilkes-theatre/
-2012-06-09,Suburbia near Dearborn,no obvious address or named place,http://pauldorpat.com/seattle-now-and-then/seattle-now-then-suburbia-on-dearborn/
-2012-06-17,Issaquah Coal Strike,event/parade — multi-location,http://pauldorpat.com/seattle-now-and-then/seattle-now-then-issaquah-coal-strike/
-2012-07-07,KRAB – Listener Supported Free-form Radio,no obvious address or named place,http://pauldorpat.com/seattle-now-and-then/seattle-now-then-krab-listener-supported-free-form-radio/
-2012-08-11,The Dominion Monarch,no obvious address or named place,http://pauldorpat.com/seattle-now-and-then/seattle-now-then-the-dominion-monarch/
-2012-10-13,Fair and Festival – Belgian Waffles,event/parade — multi-location,http://pauldorpat.com/2012/10/13/seattle-now-then-fair-and-festival-belgian-waffles/
-2012-10-27,The Arabian Theatre,no obvious address or named place,http://pauldorpat.com/2012/10/27/seattle-now-then-the-arabian-theatre/
-2012-11-03,The Hollywood Tavern,no obvious address or named place,http://pauldorpat.com/2012/11/03/seattle-now-then-the-hollywood-tavern-on-university/
-2012-12-01,The Central Seattle Service Station,no obvious address or named place,http://pauldorpat.com/2012/12/01/seattle-now-then-the-central-seattle-service-station/
-2013-02-09,A B50 crash near Airport Way,no obvious address or named place,http://pauldorpat.com/2013/02/09/seattle-now-then-a-b50-crash-near-airport-way/
-2013-02-16,The Northern Life (aka Seattle) Tower,no obvious address or named place,http://pauldorpat.com/2013/02/16/seattle-now-then-the-northern-life-aka-seattle-tower/
-2013-03-16,Signal Station on Aurora,no obvious address or named place,http://pauldorpat.com/2013/03/16/seattle-now-then-signal-station-on-aurora/
-2013-03-30,Upheaval on Spring Street,no obvious address or named place,http://pauldorpat.com/2013/03/30/seattle-now-then-upheaval-on-spring-street/
-2013-04-06,Seattle's First Rep,no obvious address or named place,http://pauldorpat.com/2013/04/06/seattle-now-then-3/
-2013-05-04,Echo Lake Landmark,no obvious address or named place,http://pauldorpat.com/2013/05/04/seattle-now-then-echo-lake-landmark/
-2013-06-21,A Night in Old Alexandria,no obvious address or named place,http://pauldorpat.com/2013/06/21/seattle-now-then-a-night-in-old-alexandria/
-2013-07-13,The Mukai Farm Matters,no obvious address or named place,http://pauldorpat.com/2013/07/13/seattle-now-then-the-mukai-farm-matters/
-2013-07-27,North Side Realty,no obvious address or named place,http://pauldorpat.com/2013/07/27/seattle-now-then-north-side-realty/
-2013-08-10,Hizzoner's Long Home Run,no obvious address or named place,http://pauldorpat.com/2013/08/10/seattle-now-then-hizzoners-long-home-run/
-2013-08-24,Lake Ballinger,no obvious address or named place,http://pauldorpat.com/2013/08/24/seattle-now-then-lake-ballinger/
-2013-09-07,Fourth and Olive,no obvious address or named place,http://pauldorpat.com/2013/09/07/seattle-now-then-fourth-and-olive/
-2013-09-14,Submarine Launch,no obvious address or named place,http://pauldorpat.com/2013/09/14/seattle-now-then-submarine-launch/
-2013-09-20,Rowe's Row at 1st and Bell,no obvious address or named place,http://pauldorpat.com/2013/09/20/seattle-now-then-rowes-row-at-1st-and-bell/
-2013-10-05,The Washington State Building of the AYPE,no obvious address or named place,http://pauldorpat.com/2013/10/05/seattle-now-then-the-washington-state-building-of-the-aype/
-2013-10-19,AYP's Forestry Building,no obvious address or named place,http://pauldorpat.com/2013/10/19/seattle-now-then-ayps-forestry-building/
-2013-12-14,Union Bay Village,no obvious address or named place,http://pauldorpat.com/2013/12/14/seattle-now-then-union-bay-village/
-2014-01-05,Amundsen's 'Maud',no obvious address or named place,http://pauldorpat.com/2014/01/05/seattle-now-then-amundsens-maud/
-2014-01-19,The First Fire Department HQ,no obvious address or named place,http://pauldorpat.com/2014/01/19/seattle-now-then-the-first-fire-department-hq/
-2014-02-15,Lady Rainier,no obvious address or named place,http://pauldorpat.com/2014/02/15/seattle-now-then-lady-rainier/
-2014-02-21,"Polk’s Potlatch Parade, 1911",event/parade — multi-location,http://pauldorpat.com/2014/02/21/seattle-now-then-polks-potlatch-parade-1911/
-2014-02-28,Seattle General Hospital,no obvious address or named place,http://pauldorpat.com/2014/02/28/seattle-now-then-seattle-general-hospital/
-2014-04-05,"Two Views from the Needle (or, A Stitch in Time)",no obvious address or named place,http://pauldorpat.com/2014/04/05/seattle-now-then-two-views-from-the-needle-or-a-stitch-in-time/
-2014-05-03,A Late Latona Bridge,no obvious address or named place,http://pauldorpat.com/2014/05/03/seattle-now-then-a-late-latona-bridge/
-2014-05-10,The Post-Fire Post-Intelligencer,no obvious address or named place,http://pauldorpat.com/2014/05/10/seattle-now-then-the-post-fire-post-intelligencer/
-2014-06-14,The Gatewood Lodge,no obvious address or named place,http://pauldorpat.com/2014/06/14/seattle-now-then-the-gatewood-lodge/
-2014-06-21,Kinnear Park,no obvious address or named place,http://pauldorpat.com/2014/06/21/seattle-now-then-kinnear-park/
-2014-07-05,A “New Deal” for Hard Times,no obvious address or named place,http://pauldorpat.com/2014/07/05/seattle-now-then-a-new-deal-for-hard-times/
-2014-08-23,End of the Line for Golden Gardens,no obvious address or named place,http://pauldorpat.com/2014/08/23/seattle-now-then-end-of-the-line-for-golden-gardens/
-2014-08-30,Seattle Then & Now: The Youngstown Steel Mill,no obvious address or named place,http://pauldorpat.com/2014/08/30/seattle-then-now-the-youngstown-steel-mill/
-2014-11-22,The Wall Street Pier,no obvious address or named place,http://pauldorpat.com/2014/11/22/seattle-now-then-the-wall-street-pier/
-2014-11-30,Seventh & Seneca,event/parade — multi-location,http://pauldorpat.com/2014/11/30/seattle-now-then-seventh-seneca/
-2014-12-06,Fourth and Pike,no obvious address or named place,http://pauldorpat.com/2014/12/06/seattle-now-then-fourth-and-pike/
-2014-12-27,"City Hall, 1908",no obvious address or named place,http://pauldorpat.com/2014/12/27/seattle-now-then-city-hall-1908/
-2015-01-10,The Terry House at 3rd & James,no obvious address or named place,http://pauldorpat.com/2015/01/10/seattle-now-then-the-terry-house-at-3rd-james/
-2015-01-24,‘Friends of the Market’ Protest at City Hall,no obvious address or named place,http://pauldorpat.com/2015/01/24/seattle-now-then-friends-of-the-market-protest-at-city-hall/
-2015-02-07,A Protest in 1937,no obvious address or named place,http://pauldorpat.com/2015/02/07/seattle-now-then-a-protest-in-1937/
-2015-02-21,The Stetson and Post Block,no obvious address or named place,http://pauldorpat.com/2015/02/21/seattle-now-then-the-stetson-and-post-block/
-2015-02-28,The Boone Home,no obvious address or named place,http://pauldorpat.com/2015/02/28/seattle-now-then-the-boone-home/
-2015-03-21,Anderson Hall,no obvious address or named place,http://pauldorpat.com/2015/03/21/seattle-now-then-anderson-hall/
-2015-03-28,“Murder” on Aurora,no obvious address or named place,http://pauldorpat.com/2015/03/28/seattle-now-then-murder-on-aurora/
-2015-04-25,Seattle Fire Ruins Redux,no obvious address or named place,http://pauldorpat.com/2015/04/25/seattle-now-then-seattle-fire-ruins-redux/
-2015-05-09,Klondike Fever on First,no obvious address or named place,http://pauldorpat.com/2015/05/09/seattle-now-then-klondike-fever-on-first/
-2015-06-06,Gethsemane Lutheran,no obvious address or named place,http://pauldorpat.com/2015/06/06/seattle-now-then-gethsemane-lutheran/
-2015-07-11,"The Seattle Fire, Three Weeks Later",no obvious address or named place,http://pauldorpat.com/2015/07/11/seattle-now-then-the-seattle-fire-three-weeks-later/
-2015-08-15,Virginia Mason,no obvious address or named place,http://pauldorpat.com/2015/08/15/seattle-now-then-virginia-mason/
-2015-08-28,Return of the Homestead,no obvious address or named place,http://pauldorpat.com/2015/08/28/seattle-now-then-return-of-the-homestead/
-2015-10-17,A View from the Cambridge Hotel,no obvious address or named place,http://pauldorpat.com/2015/10/17/seattle-now-then-a-view-from-the-cambridge-hotel/
-2015-10-24,The North Seattle Trolley Yard,no obvious address or named place,http://pauldorpat.com/2015/10/24/seattle-now-then-the-north-seattle-trolley-yard/
-2015-11-28,Rattlesnake Lake,no obvious address or named place,https://pauldorpat.com/2015/11/28/seattle-now-then-rattlesnake-lake/
-2015-12-18,Randal Gravelle’s ‘Hooverville’,no obvious address or named place,https://pauldorpat.com/2015/12/18/seattle-now-then-randal-gravelles-hooverville/
-2016-01-23,Mayor Brown’s Garage in Redmond,no obvious address or named place,https://pauldorpat.com/2016/01/23/seattle-now-then-mayor-browns-garage-in-redmond/
-2016-01-30,The Bank of Redmond,no obvious address or named place,https://pauldorpat.com/2016/01/30/seattle-now-then-the-bank-of-redmond/
-2016-02-27,"Seward Street, Juneau, Alaska",no obvious address or named place,https://pauldorpat.com/2016/02/27/seattle-now-then-seward-street-juneau-alaska/
-2016-06-04,Florists’ Row at 9th & Union,no obvious address or named place,https://pauldorpat.com/2016/06/04/seattle-now-then-florists-row-at-9th-union/
-2016-06-11,Music at Commercial and Main,no obvious address or named place,https://pauldorpat.com/2016/06/11/seattle-now-then-music-at-commercial-and-main/
-2016-10-29,The Big Stump,no obvious address or named place,https://pauldorpat.com/2016/10/29/seattle-now-then-the-big-stump/
-2016-11-12,The Yakima Canyon,no obvious address or named place,https://pauldorpat.com/2016/11/12/seattle-now-then-the-yakima-canyon/
-2016-12-03,Licton Springs,no obvious address or named place,https://pauldorpat.com/2016/12/03/seattle-now-then-licton-springs/
-2017-01-21,The Butler did it!,no obvious address or named place,https://pauldorpat.com/2017/01/21/seattle-now-then-the-butler-did-it/
-2017-03-18,Our Lady of Good Help – Part 2,no obvious address or named place,https://pauldorpat.com/2017/03/18/seattle-now-then-our-lady-of-good-help-part-2/
-2017-05-27,The Ice Arena,no obvious address or named place,https://pauldorpat.com/2017/05/27/seattle-now-then-the-ice-arena/
-2017-06-03,Sea View Hall,no obvious address or named place,https://pauldorpat.com/2017/06/03/seattle-now-then-sea-view-hall/
-2017-06-17,The Alley That Became I-5,no obvious address or named place,https://pauldorpat.com/2017/06/17/seattle-now-then-the-alley-that-became-i-5/
-2017-06-24,Mysterious Dance at Olive and Terry,no obvious address or named place,https://pauldorpat.com/2017/06/24/seattle-now-then-mysterious-dance-at-olive-and-terry/
-2017-07-01,Coo Coo Flats,no obvious address or named place,https://pauldorpat.com/2017/07/01/seattle-now-then-coo-coo-flats/
-2017-07-29,The Blyth Barn on Squak Slough,no obvious address or named place,https://pauldorpat.com/2017/07/29/seattle-now-then-the-blyth-barn-on-squak-slough/
-2017-08-05,The Gatewood School,no obvious address or named place,https://pauldorpat.com/2017/08/05/seattle-now-then-the-gatewood-school/
-2017-08-26,The ‘Empire Builder’s’ Bust,no obvious address or named place,https://pauldorpat.com/2017/08/26/seattle-now-then-the-empire-builders-bust/
-2017-09-09,Two Founders on Main Street,no obvious address or named place,https://pauldorpat.com/2017/09/09/seattle-now-then-two-founders-on-main-street/
-2017-09-16,The Onarga Apartments,no obvious address or named place,https://pauldorpat.com/2017/09/16/seattle-now-then-the-onarga-apartments/
-2017-09-23,Parking 15 Cents,no obvious address or named place,https://pauldorpat.com/2017/09/23/seattle-now-then-parking-15-cents/
-2017-10-22,Finding Kikisoblu (aka ‘Princess Angeline’),no obvious address or named place,https://pauldorpat.com/2017/10/22/seattle-now-and-then-princess-angeline-at-home/
-2017-10-28,The UW South Campus – Oars and Oceanography,no obvious address or named place,https://pauldorpat.com/2017/10/28/seattle-now-then-the-uw-south-campus-oars-and-oceanography/
-2017-12-02,The Kalakala at Low Tide,no obvious address or named place,https://pauldorpat.com/2017/12/02/seattle-now-then-the-kalakala-at-low-tide/
-2017-12-16,"Husky Stadium, 1920",no obvious address or named place,https://pauldorpat.com/2017/12/16/seattle-now-then-husky-stadium/
-2018-01-06,"Golden Potlatch Parade, 1911",event/parade — multi-location,https://pauldorpat.com/2018/01/06/seattle-now-then-golden-potlatch-parade-1911/
-2018-01-13,"Polson Building Fire, 1974",no obvious address or named place,https://pauldorpat.com/2018/01/13/seattle-now-then-polson-building-fire-1974/
-2018-01-20,Poulsbo’s Front Street,no obvious address or named place,https://pauldorpat.com/2018/01/20/seattle-now-then-poulsbos-front-street/
-2018-01-27,"The Winslow Ferry Terminal, ca. 1950",no obvious address or named place,https://pauldorpat.com/2018/01/27/seattle-now-then-the-winslow-ferry-terminal-ca-1950/
-2018-02-24,St. Francis Hall,no obvious address or named place,https://pauldorpat.com/2018/02/24/seattle-now-then-st-francis-hall/
-2018-03-10,"The Ave Trolley, ca. 1939",no obvious address or named place,https://pauldorpat.com/2018/03/10/seattle-now-then-the-ave-trolley-ca-1939/
-2018-03-31,Dairy Men at Dreamland,no obvious address or named place,https://pauldorpat.com/2018/03/31/seattle-now-then-dairy-men-at-dreamland/
-2018-05-05,The Seattle Seven On the Courthouse Steps,no obvious address or named place,https://pauldorpat.com/2018/05/05/seattle-now-then-the-seattle-seven-on-the-courthouse-steps/
-2018-06-23,The Northwest Folklife Festival,event/parade — multi-location,https://pauldorpat.com/2018/06/23/seattle-now-then-the-northwest-folklife-festival/
+date,title,pinned_to,url
+2009-01-18,"""I am blind""",Yesler Way,http://pauldorpat.com/?page_id=1710
+2009-02-15,Militia at Main Street,Second Avenue,http://pauldorpat.com/?page_id=2063
+2009-04-25,Forty-five Years of Freeway,Floating Bridge,http://pauldorpat.com/?page_id=3031
+2009-09-20,'Seeing Seattle',Lake Union,http://pauldorpat.com/?p=4258
+2009-10-11,Auto Row,Post-Intelligencer,http://pauldorpat.com/?p=4416
+2009-12-13,English Gardens at Chittenden Locks,Ballard,http://pauldorpat.com/?p=5215
+2010-01-24,Built Around the Organ,Liberty Theatre,http://pauldorpat.com/?p=5739
+2010-05-01,6th and Marion,First Hill,http://pauldorpat.com/seattle-now-and-then/seattle-now-then-6th-and-marion/
+2010-09-11,The Central Bus Terminal,Stewart Street,http://pauldorpat.com/seattle-now-and-then/seattle-now-then-the-central-bus-terminal/
+2010-10-16,East on Pine,Pine Street,http://pauldorpat.com/seattle-now-and-then/seattle-now-then-east-on-pine/
+2010-11-06,The Startup Baptists,Snohomish,http://pauldorpat.com/seattle-now-and-then/seattle-now-then-the-startup-baptists/
+2010-11-27,Street Photography,Bremerton,http://pauldorpat.com/seattle-now-and-then/seattle-now-then-street-photography/
+2011-01-08,Seattle City Light,Madison Street,http://pauldorpat.com/seattle-now-and-then/seattle-now-then-seattle-city-light/
+2011-05-21,Madison Trolley Accident,Seattle Times,http://pauldorpat.com/seattle-now-and-then/seattle-now-then-madison-trolley-accident/
+2011-06-04,We Come in Peace,Seattle Times,http://pauldorpat.com/seattle-now-and-then/seattle-now-then-we-come-in-peace/
+2011-06-11,Where's the Beef?,Aurora,http://pauldorpat.com/seattle-now-and-then/seattle-now-then-wheres-the-beef/
+2011-06-25,Biker's Choice,Lake Washington,http://pauldorpat.com/seattle-now-and-then/seattle-now-then-bikers-choice/
+2011-10-01,The First Presbyterians,First Presbyterian,http://pauldorpat.com/seattle-now-and-then/seattle-now-then-the-first-presbyterians/
+2011-11-19,"""New Land, North of the Columbia""",University of Washington,http://pauldorpat.com/seattle-now-and-then/seattle-now-then-new-land-north-of-the-columbia/
+2011-12-10,"""Before Seattle Rocked""",The Ave,http://pauldorpat.com/seattle-now-and-then/seattle-now-then-before-seattle-rocked/
+2011-12-31,Genealogy,Seattle Public Library,http://pauldorpat.com/seattle-now-and-then/seattle-now-then-genealogy/
+2012-01-21,Coming Home to Riverside,Pike Place Market,http://pauldorpat.com/seattle-now-and-then/seattle-now-then-coming-home-to-riverside/
+2012-02-18,Governor Martin's Starvation Camp,Westlake,http://pauldorpat.com/seattle-now-and-then/seattle-now-then-governor-martins-starvation-camp/
+2012-04-07,-Seattle Now & Then: The Nine Millionth Visitor,Issaquah,http://pauldorpat.com/seattle-now-and-then/seattle-now-then-the-nine-millionth-visitor/
+2012-06-09,Suburbia near Dearborn,Beacon Hill,http://pauldorpat.com/seattle-now-and-then/seattle-now-then-suburbia-on-dearborn/
+2012-11-03,The Hollywood Tavern,University Street,http://pauldorpat.com/2012/11/03/seattle-now-then-the-hollywood-tavern-on-university/
+2012-12-01,The Central Seattle Service Station,First Hill,http://pauldorpat.com/2012/12/01/seattle-now-then-the-central-seattle-service-station/
+2013-02-09,A B50 crash near Airport Way,Seattle Times,http://pauldorpat.com/2013/02/09/seattle-now-then-a-b50-crash-near-airport-way/
+2013-02-16,The Northern Life (aka Seattle) Tower,Seattle Tower,http://pauldorpat.com/2013/02/16/seattle-now-then-the-northern-life-aka-seattle-tower/
+2013-03-16,Signal Station on Aurora,First Hill,http://pauldorpat.com/2013/03/16/seattle-now-then-signal-station-on-aurora/
+2013-04-06,Seattle's First Rep,Elliott Bay,http://pauldorpat.com/2013/04/06/seattle-now-then-3/
+2013-06-21,A Night in Old Alexandria,Capitol Hill,http://pauldorpat.com/2013/06/21/seattle-now-then-a-night-in-old-alexandria/
+2013-07-27,North Side Realty,First Hill,http://pauldorpat.com/2013/07/27/seattle-now-then-north-side-realty/
+2013-09-14,Submarine Launch,First Avenue,http://pauldorpat.com/2013/09/14/seattle-now-then-submarine-launch/
+2014-01-05,Amundsen's 'Maud',waterfront,http://pauldorpat.com/2014/01/05/seattle-now-then-amundsens-maud/
+2014-01-19,The First Fire Department HQ,First Hill,http://pauldorpat.com/2014/01/19/seattle-now-then-the-first-fire-department-hq/
+2014-02-15,Lady Rainier,Seattle Times,http://pauldorpat.com/2014/02/15/seattle-now-then-lady-rainier/
+2014-02-21,"Polk’s Potlatch Parade, 1911",Stewart Street,http://pauldorpat.com/2014/02/21/seattle-now-then-polks-potlatch-parade-1911/
+2014-04-05,"Two Views from the Needle (or, A Stitch in Time)",Space Needle,http://pauldorpat.com/2014/04/05/seattle-now-then-two-views-from-the-needle-or-a-stitch-in-time/
+2014-05-03,A Late Latona Bridge,Fremont,http://pauldorpat.com/2014/05/03/seattle-now-then-a-late-latona-bridge/
+2014-06-14,The Gatewood Lodge,Queen Anne,http://pauldorpat.com/2014/06/14/seattle-now-then-the-gatewood-lodge/
+2014-06-21,Kinnear Park,Ballard,http://pauldorpat.com/2014/06/21/seattle-now-then-kinnear-park/
+2014-07-05,A “New Deal” for Hard Times,Beacon Hill,http://pauldorpat.com/2014/07/05/seattle-now-then-a-new-deal-for-hard-times/
+2014-08-23,End of the Line for Golden Gardens,Ballard,http://pauldorpat.com/2014/08/23/seattle-now-then-end-of-the-line-for-golden-gardens/
+2014-12-27,"City Hall, 1908",Yesler Building,http://pauldorpat.com/2014/12/27/seattle-now-then-city-hall-1908/
+2015-01-24,‘Friends of the Market’ Protest at City Hall,Post-Intelligencer,http://pauldorpat.com/2015/01/24/seattle-now-then-friends-of-the-market-protest-at-city-hall/
+2015-04-25,Seattle Fire Ruins Redux,Seattle Public Library,http://pauldorpat.com/2015/04/25/seattle-now-then-seattle-fire-ruins-redux/
+2015-05-09,Klondike Fever on First,Federal Building,http://pauldorpat.com/2015/05/09/seattle-now-then-klondike-fever-on-first/
+2015-07-11,"The Seattle Fire, Three Weeks Later",Yesler,http://pauldorpat.com/2015/07/11/seattle-now-then-the-seattle-fire-three-weeks-later/
+2015-08-28,Return of the Homestead,Pioneer Square,http://pauldorpat.com/2015/08/28/seattle-now-then-return-of-the-homestead/
+2015-10-24,The North Seattle Trolley Yard,Fremont,http://pauldorpat.com/2015/10/24/seattle-now-then-the-north-seattle-trolley-yard/
+2016-01-23,Mayor Brown’s Garage in Redmond,Lake Sammamish,https://pauldorpat.com/2016/01/23/seattle-now-then-mayor-browns-garage-in-redmond/
+2016-06-11,Music at Commercial and Main,Pioneer Square,https://pauldorpat.com/2016/06/11/seattle-now-then-music-at-commercial-and-main/
+2017-01-21,The Butler did it!,Butler Hotel,https://pauldorpat.com/2017/01/21/seattle-now-then-the-butler-did-it/
+2017-06-17,The Alley That Became I-5,Denny Way,https://pauldorpat.com/2017/06/17/seattle-now-then-the-alley-that-became-i-5/
+2017-06-24,Mysterious Dance at Olive and Terry,Denny Triangle,https://pauldorpat.com/2017/06/24/seattle-now-then-mysterious-dance-at-olive-and-terry/
+2017-07-01,Coo Coo Flats,Cherry Street,https://pauldorpat.com/2017/07/01/seattle-now-then-coo-coo-flats/
+2017-08-05,The Gatewood School,Ballard,https://pauldorpat.com/2017/08/05/seattle-now-then-the-gatewood-school/
+2017-08-26,The ‘Empire Builder’s’ Bust,University of Washington,https://pauldorpat.com/2017/08/26/seattle-now-then-the-empire-builders-bust/
+2017-09-23,Parking 15 Cents,First Hill,https://pauldorpat.com/2017/09/23/seattle-now-then-parking-15-cents/
+2017-10-22,Finding Kikisoblu (aka ‘Princess Angeline’),Pike Street,https://pauldorpat.com/2017/10/22/seattle-now-and-then-princess-angeline-at-home/
+2018-01-06,"Golden Potlatch Parade, 1911",Stewart Street,https://pauldorpat.com/2018/01/06/seattle-now-then-golden-potlatch-parade-1911/
+2018-05-05,The Seattle Seven On the Courthouse Steps,Federal Courthouse,https://pauldorpat.com/2018/05/05/seattle-now-then-the-seattle-seven-on-the-courthouse-steps/
