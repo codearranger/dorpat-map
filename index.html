@@ -7,6 +7,7 @@
 <link rel="stylesheet" href="leaflet.css"/>
 <script src="leaflet.js"></script>
 <script src="landmarks.js"></script>
+<script src="archive.js"></script>
 <style>
   html, body { margin: 0; padding: 0; height: 100%; font-family: Georgia, "Hoefler Text", serif; background: #e8dfcc; }
   #app { display: flex; height: 100vh; width: 100%; }
@@ -75,6 +76,8 @@
     background: #2f5d3a !important; border: 2px solid #f3ead5;
     width: 10px !important; height: 10px !important;
   }
+  .pin-archive-addr  { background: #1f4e7a !important; border: 2px solid #f3ead5; width: 11px !important; height: 11px !important; }
+  .pin-archive-place { background: #6b8aaa !important; border: 2px solid #f3ead5; width: 9px  !important; height: 9px  !important; opacity: 0.85; }
   .pin {
     width: 14px; height: 14px; border-radius: 50%;
     box-shadow: 0 1px 3px rgba(0,0,0,0.5);
@@ -86,6 +89,7 @@
   .layer-row label { display: block; margin: 2px 0; cursor: pointer; }
   .layer-row .swatch { display: inline-block; width: 10px; height: 10px; border-radius: 50%; vertical-align: middle; margin: 0 4px 1px 0; }
   .list-item.lm .bk { color: #2f5d3a; }
+  .list-item.ar .bk { color: #1f4e7a; }
   .lm-link {
     display: inline-block; margin: 4px 8px 0 0; font-size: 11px;
     color: #2f5d3a; text-decoration: none; border-bottom: 1px dotted #2f5d3a;
@@ -112,11 +116,13 @@
 <div id="app">
   <div id="sidebar">
     <h1>Seattle Now &amp; Then</h1>
-    <div class="sub">303 buildings &amp; sites from Paul Dorpat's three <em>Now &amp; Then</em> volumes (1984–1990), plus 516 City of Seattle designated landmarks.</div>
+    <div class="sub">303 features from Paul Dorpat's three <em>Now &amp; Then</em> volumes (1984–1990), 358 entries from his web archive (2008–2018), plus 516 City of Seattle designated landmarks.</div>
     <input type="text" class="search" id="q" placeholder="Search title or location…" />
     <div class="layer-row">
       <label><input type="checkbox" id="dorpatToggle" checked>
-        <span class="swatch" style="background:#8b2e1c"></span>Dorpat Now &amp; Then features</label>
+        <span class="swatch" style="background:#8b2e1c"></span>Dorpat Now &amp; Then features (book)</label>
+      <label><input type="checkbox" id="archiveToggle">
+        <span class="swatch" style="background:#1f4e7a"></span>Dorpat web archive (2008–2018)</label>
       <label><input type="checkbox" id="landmarkToggle">
         <span class="swatch" style="background:#2f5d3a"></span>City designated landmarks</label>
     </div>
@@ -125,17 +131,20 @@
       <label><input type="checkbox" value="2" class="bkf" checked> Vol. 2</label>
       <label><input type="checkbox" value="3" class="bkf" checked> Vol. 3</label>
     </div>
-    <div class="lm-hint" id="lmHint" style="display:none">516 landmarks — type a search to filter the list.</div>
+    <div class="lm-hint" id="lmHint" style="display:none">Type a search to filter the sidebar list (pins always show on the map).</div>
     <div class="counts" id="counts"></div>
     <div class="list" id="list"></div>
   </div>
   <div id="map"></div>
 </div>
 <div class="legend">
-  <b>Now &amp; Then pins</b>
+  <b>Now &amp; Then book</b>
   <span class="sw" style="background:#8b2e1c"></span>exact address<br/>
   <span class="sw" style="background:#c47a2b"></span>approximate<br/>
   <span class="sw" style="background:#a89278"></span>neighborhood<br/>
+  <b style="margin-top:5px">Web archive</b>
+  <span class="sw" style="background:#1f4e7a"></span>geocoded address<br/>
+  <span class="sw" style="background:#6b8aaa"></span>named place / nbhd<br/>
   <b style="margin-top:5px">Landmarks</b>
   <span class="sw" style="background:#2f5d3a"></span>City designated
 </div>
@@ -255,6 +264,41 @@ LANDMARKS.forEach((lm, i) => {
   landmarkMarkers[i] = m;
 });
 
+// ---- Dorpat web archive layer ----
+const archiveIconAddr = L.divIcon({
+  className: '', html: '<div class="pin pin-archive-addr"></div>',
+  iconSize: [11, 11], iconAnchor: [5, 5], popupAnchor: [0, -6],
+});
+const archiveIconPlace = L.divIcon({
+  className: '', html: '<div class="pin pin-archive-place"></div>',
+  iconSize: [9, 9], iconAnchor: [4, 4], popupAnchor: [0, -5],
+});
+const archiveMarkers = [];
+function archivePopup(a) {
+  const dt = a.d || '';
+  // Pretty date: 2014-05-09 -> May 2014
+  const months = {'01':'Jan','02':'Feb','03':'Mar','04':'Apr','05':'May','06':'Jun','07':'Jul','08':'Aug','09':'Sep','10':'Oct','11':'Nov','12':'Dec'};
+  const pretty = dt.length === 10 ? `${months[dt.slice(5,7)]||''} ${dt.slice(8,10)}, ${dt.slice(0,4)}` : dt;
+  const img = a.i ? `<img class="popup-img" src="${a.i}" alt="${a.t}" loading="lazy" onerror="this.style.display='none'"/>` : '';
+  const excerpt = a.x ? `<div class="popup-summary">${a.x.replace(/</g,'&lt;')}</div>` : '';
+  const conf = a.c === 'addr' ? 'geocoded address' : 'approximate (named place)';
+  return `
+    <a class="popup-link" href="${a.u}" target="_blank" rel="noopener" title="Open archive entry">
+      <div class="popup-title">${a.t}</div>
+      <div class="popup-source">Web archive · ${pretty} · ${conf}</div>
+      ${img}
+      ${excerpt}
+      <div class="popup-cta">Open archive entry ↗</div>
+    </a>
+  `;
+}
+ARCHIVE.forEach((a, i) => {
+  const icon = a.c === 'addr' ? archiveIconAddr : archiveIconPlace;
+  const m = L.marker([a.lat, a.lon], { icon: icon, title: a.t });
+  m.bindPopup(archivePopup(a), { maxWidth: 360 });
+  archiveMarkers[i] = m;
+});
+
 // Sidebar list
 const listEl = document.getElementById('list');
 const countsEl = document.getElementById('counts');
@@ -262,6 +306,7 @@ const qEl = document.getElementById('q');
 const bkFilters = [...document.querySelectorAll('.bkf')];
 const dorpatToggle = document.getElementById('dorpatToggle');
 const landmarkToggle = document.getElementById('landmarkToggle');
+const archiveToggle = document.getElementById('archiveToggle');
 const bookFiltersEl = document.getElementById('bookFilters');
 const lmHintEl = document.getElementById('lmHint');
 
@@ -270,11 +315,13 @@ function render() {
   const activeBooks = new Set(bkFilters.filter(c => c.checked).map(c => +c.value));
   const dorpatOn = dorpatToggle.checked;
   const landmarksOn = landmarkToggle.checked;
+  const archiveOn = archiveToggle.checked;
 
   bookFiltersEl.style.display = dorpatOn ? '' : 'none';
-  lmHintEl.style.display = (landmarksOn && !q) ? '' : 'none';
+  lmHintEl.style.display = ((landmarksOn || archiveOn) && !q) ? '' : 'none';
 
-  // Dorpat features
+
+  // Dorpat features (book)
   let dCount = 0;
   const dItems = [];
   for (const f of FEATURES) {
@@ -284,6 +331,23 @@ function render() {
     if (match) {
       dCount++;
       dItems.push(f);
+      if (!map.hasLayer(mk)) mk.addTo(map);
+    } else if (map.hasLayer(mk)) {
+      map.removeLayer(mk);
+    }
+  }
+
+  // Web archive
+  let aCount = 0;
+  const aItems = [];
+  for (let i = 0; i < ARCHIVE.length; i++) {
+    const a = ARCHIVE[i];
+    const match = archiveOn &&
+      (!q || a.t.toLowerCase().includes(q) || (a.x||'').toLowerCase().includes(q));
+    const mk = archiveMarkers[i];
+    if (match) {
+      aCount++;
+      if (q) aItems.push({ idx: i, a });
       if (!map.hasLayer(mk)) mk.addTo(map);
     } else if (map.hasLayer(mk)) {
       map.removeLayer(mk);
@@ -309,6 +373,7 @@ function render() {
 
   const parts = [];
   if (dorpatOn) parts.push(`${dCount} of ${FEATURES.length} N&T features`);
+  if (archiveOn) parts.push(`${aCount} of ${ARCHIVE.length} archive entries`);
   if (landmarksOn) parts.push(`${lCount} of ${LANDMARKS.length} landmarks`);
   countsEl.textContent = parts.join(' · ') || 'No layers visible';
 
@@ -319,6 +384,14 @@ function render() {
         <span class="bk">V${f.book}·${f.feature}</span>
         <span class="t"> ${f.title}</span>
         <span class="loc">${f.location}</span>
+      </div>`);
+  }
+  for (const it of aItems) {
+    html.push(`
+      <div class="list-item ar" data-kind="a" data-idx="${it.idx}">
+        <span class="bk">WEB</span>
+        <span class="t"> ${it.a.t}</span>
+        <span class="loc">${it.a.d}</span>
       </div>`);
   }
   for (const it of lItems) {
@@ -336,6 +409,11 @@ function render() {
         const f = FEATURES.find(x => x.id === el.dataset.id);
         map.flyTo([f.lat, f.lon], 16, { duration: 0.6 });
         markers[f.id].openPopup();
+      } else if (el.dataset.kind === 'a') {
+        const i = +el.dataset.idx;
+        const a = ARCHIVE[i];
+        map.flyTo([a.lat, a.lon], 17, { duration: 0.6 });
+        archiveMarkers[i].openPopup();
       } else {
         const i = +el.dataset.idx;
         const lm = LANDMARKS[i];
@@ -350,6 +428,7 @@ qEl.addEventListener('input', render);
 bkFilters.forEach(c => c.addEventListener('change', render));
 dorpatToggle.addEventListener('change', render);
 landmarkToggle.addEventListener('change', render);
+archiveToggle.addEventListener('change', render);
 render();
 </script>
 </body>
