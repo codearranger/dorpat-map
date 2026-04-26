@@ -8,6 +8,7 @@
 <script src="leaflet.js"></script>
 <script src="landmarks.js"></script>
 <script src="archive.js"></script>
+<script src="books-extras.js"></script>
 <style>
   html, body { margin: 0; padding: 0; height: 100%; font-family: Georgia, "Hoefler Text", serif; background: #e8dfcc; }
   #app { display: flex; height: 100vh; width: 100%; }
@@ -78,6 +79,7 @@
   }
   .pin-archive-addr  { background: #1f4e7a !important; border: 2px solid #f3ead5; width: 11px !important; height: 11px !important; }
   .pin-archive-place { background: #6b8aaa !important; border: 2px solid #f3ead5; width: 9px  !important; height: 9px  !important; opacity: 0.85; }
+  .pin-book-extra    { background: #6b3f9c !important; border: 2px solid #f3ead5; width: 12px !important; height: 12px !important; transform: rotate(45deg); border-radius: 2px !important; }
   .pin {
     width: 14px; height: 14px; border-radius: 50%;
     box-shadow: 0 1px 3px rgba(0,0,0,0.5);
@@ -90,6 +92,7 @@
   .layer-row .swatch { display: inline-block; width: 10px; height: 10px; border-radius: 50%; vertical-align: middle; margin: 0 4px 1px 0; }
   .list-item.lm .bk { color: #2f5d3a; }
   .list-item.ar .bk { color: #1f4e7a; }
+  .list-item.xt .bk { color: #6b3f9c; }
   .lm-link {
     display: inline-block; margin: 4px 8px 0 0; font-size: 11px;
     color: #2f5d3a; text-decoration: none; border-bottom: 1px dotted #2f5d3a;
@@ -116,13 +119,15 @@
 <div id="app">
   <div id="sidebar">
     <h1>Seattle Now &amp; Then</h1>
-    <div class="sub">303 features from Paul Dorpat's three <em>Now &amp; Then</em> volumes (1984–1990), 358 entries from his web archive (2008–2018), plus 516 City of Seattle designated landmarks.</div>
+    <div class="sub">303 features from Paul Dorpat's three <em>Now &amp; Then</em> volumes (1984–1990), 358 entries from his web archive (2008–2018), 36 hand-curated locations from <em>Illustrated History of the Seattle Waterfront</em> (2005) and <em>Building Washington</em> (1998), plus 516 City of Seattle designated landmarks.</div>
     <input type="text" class="search" id="q" placeholder="Search title or location…" />
     <div class="layer-row">
       <label><input type="checkbox" id="dorpatToggle" checked>
         <span class="swatch" style="background:#8b2e1c"></span>Dorpat Now &amp; Then features (book)</label>
       <label><input type="checkbox" id="archiveToggle">
         <span class="swatch" style="background:#1f4e7a"></span>Dorpat web archive (2008–2018)</label>
+      <label><input type="checkbox" id="extrasToggle">
+        <span class="swatch" style="background:#6b3f9c;border-radius:2px;transform:rotate(45deg)"></span>Waterfront / Building WA books</label>
       <label><input type="checkbox" id="landmarkToggle">
         <span class="swatch" style="background:#2f5d3a"></span>City designated landmarks</label>
     </div>
@@ -145,6 +150,8 @@
   <b style="margin-top:5px">Web archive</b>
   <span class="sw" style="background:#1f4e7a"></span>geocoded address<br/>
   <span class="sw" style="background:#6b8aaa"></span>named place / nbhd<br/>
+  <b style="margin-top:5px">Other Dorpat books</b>
+  <span class="sw" style="background:#6b3f9c;border-radius:2px;transform:rotate(45deg)"></span>Waterfront / Building WA<br/>
   <b style="margin-top:5px">Landmarks</b>
   <span class="sw" style="background:#2f5d3a"></span>City designated
 </div>
@@ -299,6 +306,34 @@ ARCHIVE.forEach((a, i) => {
   archiveMarkers[i] = m;
 });
 
+// ---- Books extras (Waterfront / Building Washington) ----
+const extrasIcon = L.divIcon({
+  className: '', html: '<div class="pin pin-book-extra"></div>',
+  iconSize: [12, 12], iconAnchor: [6, 6], popupAnchor: [0, -7],
+});
+const extrasMarkers = [];
+const BOOK_NAMES = {
+  'WF': 'Illustrated History of the Seattle Waterfront (Dorpat, 2005)',
+  'BW': 'Building Washington (Dorpat & McCoy, 1998)',
+};
+function extrasPopup(e) {
+  const book = BOOK_NAMES[e.src] || e.src;
+  const excerpt = e.x ? `<div class="popup-summary">${e.x.replace(/</g,'&lt;')}</div>` : '';
+  return `
+    <a class="popup-link" href="${e.u}" target="_blank" rel="noopener" title="Open the book PDF">
+      <div class="popup-title">◆ ${e.t}</div>
+      <div class="popup-source">${book}</div>
+      ${excerpt}
+      <div class="popup-cta">Open the book PDF ↗</div>
+    </a>
+  `;
+}
+BOOKS_EXTRAS.forEach((e, i) => {
+  const m = L.marker([e.lat, e.lon], { icon: extrasIcon, title: e.t });
+  m.bindPopup(extrasPopup(e), { maxWidth: 340 });
+  extrasMarkers[i] = m;
+});
+
 // Sidebar list
 const listEl = document.getElementById('list');
 const countsEl = document.getElementById('counts');
@@ -307,6 +342,7 @@ const bkFilters = [...document.querySelectorAll('.bkf')];
 const dorpatToggle = document.getElementById('dorpatToggle');
 const landmarkToggle = document.getElementById('landmarkToggle');
 const archiveToggle = document.getElementById('archiveToggle');
+const extrasToggle = document.getElementById('extrasToggle');
 const bookFiltersEl = document.getElementById('bookFilters');
 const lmHintEl = document.getElementById('lmHint');
 
@@ -316,9 +352,27 @@ function render() {
   const dorpatOn = dorpatToggle.checked;
   const landmarksOn = landmarkToggle.checked;
   const archiveOn = archiveToggle.checked;
+  const extrasOn = extrasToggle.checked;
 
   bookFiltersEl.style.display = dorpatOn ? '' : 'none';
   lmHintEl.style.display = ((landmarksOn || archiveOn) && !q) ? '' : 'none';
+
+  // Books extras (Waterfront / Building Washington)
+  let xCount = 0;
+  const xItems = [];
+  for (let i = 0; i < BOOKS_EXTRAS.length; i++) {
+    const e = BOOKS_EXTRAS[i];
+    const match = extrasOn &&
+      (!q || e.t.toLowerCase().includes(q) || (e.x||'').toLowerCase().includes(q));
+    const mk = extrasMarkers[i];
+    if (match) {
+      xCount++;
+      xItems.push({ idx: i, e });
+      if (!map.hasLayer(mk)) mk.addTo(map);
+    } else if (map.hasLayer(mk)) {
+      map.removeLayer(mk);
+    }
+  }
 
 
   // Dorpat features (book)
@@ -374,6 +428,7 @@ function render() {
   const parts = [];
   if (dorpatOn) parts.push(`${dCount} of ${FEATURES.length} N&T features`);
   if (archiveOn) parts.push(`${aCount} of ${ARCHIVE.length} archive entries`);
+  if (extrasOn) parts.push(`${xCount} of ${BOOKS_EXTRAS.length} book extras`);
   if (landmarksOn) parts.push(`${lCount} of ${LANDMARKS.length} landmarks`);
   countsEl.textContent = parts.join(' · ') || 'No layers visible';
 
@@ -392,6 +447,14 @@ function render() {
         <span class="bk">WEB</span>
         <span class="t"> ${it.a.t}</span>
         <span class="loc">${it.a.d}</span>
+      </div>`);
+  }
+  for (const it of xItems) {
+    html.push(`
+      <div class="list-item xt" data-kind="x" data-idx="${it.idx}">
+        <span class="bk">${it.e.src}</span>
+        <span class="t"> ${it.e.t}</span>
+        <span class="loc">${BOOK_NAMES[it.e.src].split('(')[0].trim()}</span>
       </div>`);
   }
   for (const it of lItems) {
@@ -414,6 +477,11 @@ function render() {
         const a = ARCHIVE[i];
         map.flyTo([a.lat, a.lon], 17, { duration: 0.6 });
         archiveMarkers[i].openPopup();
+      } else if (el.dataset.kind === 'x') {
+        const i = +el.dataset.idx;
+        const e = BOOKS_EXTRAS[i];
+        map.flyTo([e.lat, e.lon], 17, { duration: 0.6 });
+        extrasMarkers[i].openPopup();
       } else {
         const i = +el.dataset.idx;
         const lm = LANDMARKS[i];
@@ -429,6 +497,7 @@ bkFilters.forEach(c => c.addEventListener('change', render));
 dorpatToggle.addEventListener('change', render);
 landmarkToggle.addEventListener('change', render);
 archiveToggle.addEventListener('change', render);
+extrasToggle.addEventListener('change', render);
 render();
 </script>
 </body>
