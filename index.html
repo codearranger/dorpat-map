@@ -120,7 +120,7 @@
 <div id="app">
   <div id="sidebar">
     <h1>Seattle Now &amp; Then</h1>
-    <div class="sub">303 features from Paul Dorpat's three <em>Now &amp; Then</em> volumes (1984–1990), all 503 entries from his web archive (2008–2018), 36 hand-curated locations from <em>Illustrated History of the Seattle Waterfront</em> (2005) and <em>Building Washington</em> (1998), plus 516 City of Seattle designated landmarks.</div>
+    <div class="sub">303 features from Paul Dorpat's three <em>Now &amp; Then</em> volumes (1984–1990), all 503 entries from his web archive (2008–2018), 36 hand-curated locations from <em>Illustrated History of the Seattle Waterfront</em> (2005) and <em>Building Washington</em> (1998), plus 516 City of Seattle designated landmarks. &middot; <a href="baist-1912/index.html" style="color:#8b2e1c">Browse the 1912 Baist's Atlas &rarr;</a></div>
     <input type="text" class="search" id="q" placeholder="Search title or location…" />
     <div class="layer-row">
       <label><input type="checkbox" id="dorpatToggle" checked>
@@ -512,9 +512,4 @@ qEl.addEventListener('input', render);
 bkFilters.forEach(c => c.addEventListener('change', render));
 dorpatToggle.addEventListener('change', render);
 landmarkToggle.addEventListener('change', render);
-archiveToggle.addEventListener('change', render);
-extrasToggle.addEventListener('change', render);
-render();
-</script>
-</body>
-</html>
+archiveToggle.addEventListener(

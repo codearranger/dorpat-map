@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>1912 Baist's Atlas — Plate viewer</title>
+<link rel="stylesheet" href="../leaflet.css"/>
+<script src="../leaflet.js"></script>
+<style>
+  html, body { margin: 0; padding: 0; height: 100%; background: #1a1410; font-family: Georgia, serif; color: #f3ead5; overflow: hidden; }
+  header {
+    position: absolute; top: 0; left: 0; right: 0; z-index: 1000;
+    background: rgba(20,15,10,0.85); padding: 8px 14px;
+    display: flex; align-items: center; gap: 14px; flex-wrap: wrap;
+    border-bottom: 1px solid #4a3a20;
+  }
+  header a { color: #d4a865; text-decoration: none; font-size: 13px; }
+  header a:hover { color: #f3ead5; text-decoration: underline; }
+  header .num { font-weight: 700; font-size: 17px; color: #f3ead5; letter-spacing: 0.04em; }
+  header .label { font-size: 13px; color: #d4a865; font-style: italic; }
+  header .nav { margin-left: auto; display: flex; gap: 8px; align-items: center; }
+  header .nav button {
+    background: #2a1c0a; border: 1px solid #6b4c25; color: #f3ead5;
+    padding: 4px 10px; border-radius: 3px; cursor: pointer; font-family: inherit; font-size: 13px;
+  }
+  header .nav button:hover { background: #4a3a20; }
+  header .nav button:disabled { opacity: 0.3; cursor: not-allowed; }
+  #map { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: #1a1410; }
+  .leaflet-container { background: #1a1410 !important; }
+  .leaflet-control-attribution { display: none; }
+</style>
+</head>
+<body>
+<header>
+  <a href="index.html">&larr; index</a>
+  <span class="num" id="num">Plate ?</span>
+  <span class="label" id="label"></span>
+  <span class="nav">
+    <button id="prev">&larr; prev</button>
+    <button id="next">next &rarr;</button>
+    <a id="download" href="#" download style="border:1px solid #6b4c25;padding:4px 10px;border-radius:3px;">download full-res</a>
+  </span>
+</header>
+<div id="map"></div>
+<script>
+// Plate metadata mirrors index.html
+const plates = [
+  ["Pioneer Square / waterfront"],
+  ["Yesler / James / 5th-9th"],
+  ["Cherry / Marion / 9th-12th"],
+  ["Pike / Pine / Westlake"],
+  ["Pine / Olive / 5th-9th"],
+  ["First Hill / Capitol Hill"],
+  ["Belltown / Cascade"],
+  ["Lower Queen Anne"],
+  ["Queen Anne south"],
+  ["Queen Anne north"],
+  ["South Lake Union / Eastlake"],
+  ["North Lake Union / Roanoke"],
+  ["Magnolia / Interbay"],
+  ["Ballard / Sunset Hill"],
+  ["Phinney / Greenwood / Fremont"],
+  ["Wallingford / Tangletown"],
+  ["U District / Ravenna"],
+  ["Loyal Heights / Crown Hill"],
+  ["North Ballard / Olympic Manor"],
+  ["Laurelhurst / Sand Point"],
+  ["Magnolia north / bluff"],
+  ["South Park / Riverton"],
+  ["International District / Yesler"],
+  ["Madison / Madrona"],
+  ["Central District"],
+  ["Beacon Hill / SoDo"],
+  ["West Seattle north / Alki"],
+  ["West Seattle south / Junction"],
+  ["Mt. Baker / Columbia City"],
+  ["Leschi / Madrona / Mt. Baker"],
+  ["Seward Park / Brighton"],
+  ["Rainier Beach"],
+  ["Highland Park / White Center"],
+  ["Fort Lawton / Discovery Park"],
+];
+const params = new URLSearchParams(location.search);
+let p = parseInt(params.get('p') || '1', 10);
+if (isNaN(p) || p < 1 || p > 34) p = 1;
+function load(p) {
+  const nn = String(p).padStart(2, '0');
+  document.getElementById('num').textContent = `Plate ${p}`;
+  document.getElementById('label').textContent = plates[p-1][0];
+  document.getElementById('prev').disabled = (p === 1);
+  document.getElementById('next').disabled = (p === 34);
+  document.getElementById('download').href = `plates/plate-${nn}.jpg`;
+  document.getElementById('download').download = `1912-baist-plate-${nn}.jpg`;
+
+  // Set up Leaflet image-overlay style viewer (best deep-zoom UX with no tiles)
+  if (window._map) { window._map.remove(); }
+  const map = L.map('map', {
+    crs: L.CRS.Simple, minZoom: -3, maxZoom: 3, zoomSnap: 0.25, attributionControl: false,
+  });
+  window._map = map;
+  // Probe image dimensions, then set bounds
+  const img = new Image();
+  img.onload = function() {
+    const w = img.naturalWidth, h = img.naturalHeight;
+    const bounds = [[0, 0], [h, w]];
+    L.imageOverlay(`plates/plate-${nn}.jpg`, bounds).addTo(map);
+    map.setMaxBounds([[-h*0.1, -w*0.1], [h*1.1, w*1.1]]);
+    map.fitBounds(bounds);
+  };
+  img.src = `plates/plate-${nn}.jpg`;
+  // update URL without reload
+  history.replaceState(null, '', `?p=${nn}`);
+}
+document.getElementById('prev').onclick = () => { if (p>1) { p--; load(p); }};
+document.getElementById('next').onclick = () => { if (p<34) { p++; load(p); }};
+document.addEventListener('keydown', e => {
+  if (e.key === 'ArrowLeft' && p>1) { p--; load(p); }
+  if (e.key === 'ArrowRight' && p<34) { p++; load(p); }
+});
+load(p);
+</script>
+</body>
+</html>

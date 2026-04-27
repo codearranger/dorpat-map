@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>1912 Baist's Real Estate Atlas of Seattle</title>
+<style>
+  html, body { margin: 0; padding: 0; background: #e8dfcc; font-family: Georgia, "Hoefler Text", serif; color: #2a1c0a; }
+  header {
+    background: #f3ead5; border-bottom: 2px solid #8a6d3b;
+    padding: 14px 22px; display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap;
+  }
+  header h1 { margin: 0; font-size: 24px; color: #3a2b15; }
+  header .sub { color: #6b4c25; font-size: 13px; font-style: italic; margin-top: 4px; }
+  header a.back { color: #8b2e1c; text-decoration: none; font-size: 13px; }
+  header a.back:hover { text-decoration: underline; }
+  main { max-width: 1400px; margin: 0 auto; padding: 22px; }
+  .layout { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+  @media (max-width: 900px) { .layout { grid-template-columns: 1fr; } }
+  section h2 {
+    margin: 0 0 10px; font-size: 17px; color: #3a2b15;
+    border-bottom: 1px dotted #b79a6c; padding-bottom: 4px;
+  }
+  .index-img-wrap { background: #f3ead5; border: 1px solid #8a6d3b; padding: 8px; border-radius: 3px; }
+  .index-img-wrap img { width: 100%; display: block; }
+  .index-caption { font-size: 12px; color: #6b4c25; margin-top: 6px; font-style: italic; }
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 10px;
+  }
+  .tile {
+    background: #f3ead5; border: 1px solid #a88858; border-radius: 3px;
+    padding: 6px; cursor: pointer; text-decoration: none; color: inherit;
+    display: flex; flex-direction: column; align-items: center;
+    transition: box-shadow 0.15s, transform 0.15s;
+  }
+  .tile:hover { box-shadow: 0 0 0 2px #8b2e1c; transform: translateY(-1px); }
+  .tile img { width: 100%; height: 110px; object-fit: cover; object-position: center; border: 1px solid #7a5a2a; }
+  .tile .num {
+    margin-top: 5px; font-weight: 700; color: #3a2b15;
+    font-size: 13px; letter-spacing: 0.04em;
+  }
+  .tile .label { font-size: 11px; color: #6b4c25; text-align: center; margin-top: 1px; }
+  footer { padding: 22px; text-align: center; color: #6b4c25; font-size: 12px; }
+  footer a { color: #8b2e1c; text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
+</style>
+</head>
+<body>
+<header>
+  <div>
+    <h1>1912 Baist&rsquo;s Real Estate Atlas of Seattle</h1>
+    <div class="sub">34 plates &middot; engraved on stone, hand-coloured &middot; G. W. Baist, Philadelphia &middot; scale 100 ft to 1 in</div>
+  </div>
+  <a class="back" href="../index.html">&larr; back to Now &amp; Then map</a>
+</header>
+<main>
+<div class="layout">
+  <section>
+    <h2>Index map</h2>
+    <div class="index-img-wrap">
+      <img src="index-map.jpg" alt="1912 Baist's plate index showing all 34 plates over Seattle"/>
+    </div>
+    <div class="index-caption">
+      Numbered red rectangles show the area each plate covers. Use it to find the plate that contains the corner of Seattle you&rsquo;re after, then click that number in the gallery on the right.
+    </div>
+  </section>
+  <section>
+    <h2>Plates</h2>
+    <div class="grid" id="grid"></div>
+    <div class="index-caption" style="margin-top:8px">
+      Each plate is a high-res scan of the original 1912 lithograph, ~22 in &times; 16 in at 180 dpi. Click to open the deep-zoom viewer.
+    </div>
+  </section>
+</div>
+</main>
+<footer>
+  Source: scans by Paul Dorpat, posted at <a href="https://pauldorpat.com/maps/1912-baists/" target="_blank" rel="noopener">pauldorpat.com/maps/1912-baists</a>. The 1912 atlas is in the public domain.
+</footer>
+<script>
+// Plate descriptions (which area each one covers — from the index map)
+const plates = [
+  { n: 1,  label: "Pioneer Square / waterfront" },
+  { n: 2,  label: "Yesler / James / 5th-9th" },
+  { n: 3,  label: "Cherry / Marion / 9th-12th" },
+  { n: 4,  label: "Pike / Pine / Westlake" },
+  { n: 5,  label: "Pine / Olive / 5th-9th" },
+  { n: 6,  label: "First Hill / Capitol Hill" },
+  { n: 7,  label: "Belltown / Cascade" },
+  { n: 8,  label: "Lower Queen Anne" },
+  { n: 9,  label: "Queen Anne south" },
+  { n: 10, label: "Queen Anne north" },
+  { n: 11, label: "South Lake Union / Eastlake" },
+  { n: 12, label: "North Lake Union / Roanoke" },
+  { n: 13, label: "Magnolia / Interbay" },
+  { n: 14, label: "Ballard / Sunset Hill" },
+  { n: 15, label: "Phinney / Greenwood / Fremont" },
+  { n: 16, label: "Wallingford / Tangletown" },
+  { n: 17, label: "U District / Ravenna" },
+  { n: 18, label: "Loyal Heights / Crown Hill" },
+  { n: 19, label: "North Ballard / Olympic Manor" },
+  { n: 20, label: "Laurelhurst / Sand Point" },
+  { n: 21, label: "Magnolia north / bluff" },
+  { n: 22, label: "South Park / Riverton" },
+  { n: 23, label: "International District / Yesler" },
+  { n: 24, label: "Madison / Madrona" },
+  { n: 25, label: "Central District" },
+  { n: 26, label: "Beacon Hill / SoDo" },
+  { n: 27, label: "West Seattle north / Alki" },
+  { n: 28, label: "West Seattle south / Junction" },
+  { n: 29, label: "Mt. Baker / Columbia City" },
+  { n: 30, label: "Leschi / Madrona / Mt. Baker" },
+  { n: 31, label: "Seward Park / Brighton" },
+  { n: 32, label: "Rainier Beach" },
+  { n: 33, label: "Highland Park / White Center" },
+  { n: 34, label: "Fort Lawton / Discovery Park" },
+];
+const grid = document.getElementById('grid');
+plates.forEach(p => {
+  const nn = String(p.n).padStart(2, '0');
+  const a = document.createElement('a');
+  a.className = 'tile';
+  a.href = `plate.html?p=${nn}`;
+  a.innerHTML = `
+    <img src="thumbs/plate-${nn}.jpg" alt="Plate ${p.n} thumbnail" loading="lazy"/>
+    <div class="num">Plate ${p.n}</div>
+    <div class="label">${p.label}</div>
+  `;
+  grid.appendChild(a);
+});
+</script>
+</body>
+</html>
