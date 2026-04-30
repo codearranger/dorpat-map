@@ -100,6 +100,14 @@
   }
   .lm-link:hover { color: #1a3a22; }
   .popup-cta-row { margin-top: 6px; padding-top: 4px; border-top: 1px dotted #b79a6c; }
+  .popup-thennow { margin-bottom: 8px; }
+  .popup-thennow + .popup-thennow { padding-top: 6px; border-top: 1px dotted #b79a6c; }
+  .popup-tag {
+    display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: 0.1em;
+    color: #f3ead5; background: #8b2e1c; padding: 1px 6px; border-radius: 2px;
+    margin-bottom: 4px;
+  }
+  .popup-thennow:nth-child(2) .popup-tag { background: #2f5d3a; }
   .lm-hint { color: #6b4c25; font-size: 11px; margin: -2px 0 6px; font-style: italic; }
   .legend {
     position: absolute; bottom: 18px; right: 18px; z-index: 500;
@@ -296,8 +304,21 @@ function archivePopup(a) {
   // Pretty date: 2014-05-09 -> May 2014
   const months = {'01':'Jan','02':'Feb','03':'Mar','04':'Apr','05':'May','06':'Jun','07':'Jul','08':'Aug','09':'Sep','10':'Oct','11':'Nov','12':'Dec'};
   const pretty = dt.length === 10 ? `${months[dt.slice(5,7)]||''} ${dt.slice(8,10)}, ${dt.slice(0,4)}` : dt;
-  const img = a.i ? `<img class="popup-img" src="${a.i}" alt="${a.t}" loading="lazy" onerror="this.style.display='none'"/>` : '';
-  const excerpt = a.x ? `<div class="popup-summary">${a.x.replace(/</g,'&lt;')}</div>` : '';
+  const escape = s => (s||'').replace(/</g,'&lt;');
+  const imgNow = a.i ? `<img class="popup-img" src="${a.i}" alt="${a.t}" loading="lazy" onerror="this.style.display='none'"/>` : '';
+  const imgThen = a.i_then ? `<img class="popup-img" src="${a.i_then}" alt="historical view" loading="lazy" onerror="this.style.display='none'"/>` : '';
+  const excerptNow = a.x ? `<div class="popup-summary">${escape(a.x)}</div>` : '';
+  const excerptThen = a.x_then ? `<div class="popup-summary">${escape(a.x_then)}</div>` : '';
+  // Then/now pair: show old image first, then new image, with their captions
+  let body;
+  if (a.i_then) {
+    body = `
+      ${imgThen ? `<div class="popup-thennow"><div class="popup-tag">THEN</div>${imgThen}${excerptThen}</div>` : ''}
+      ${imgNow ? `<div class="popup-thennow"><div class="popup-tag">NOW</div>${imgNow}${excerptNow}</div>` : ''}
+    `;
+  } else {
+    body = `${imgNow}${excerptNow}`;
+  }
   const conf = a.c === 'addr' ? 'geocoded address'
              : a.c === 'cross' ? 'cross-street'
              : a.c === 'place' ? 'named place (from title)'
@@ -306,8 +327,7 @@ function archivePopup(a) {
     <a class="popup-link" href="${a.u}" target="_blank" rel="noopener" title="Open archive entry">
       <div class="popup-title">${a.t}</div>
       <div class="popup-source">Web archive · ${pretty} · ${conf}</div>
-      ${img}
-      ${excerpt}
+      ${body}
       <div class="popup-cta">Open archive entry ↗</div>
     </a>
   `;
