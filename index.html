@@ -5,7 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Seattle Now & Then — Paul Dorpat Map</title>
 <link rel="stylesheet" href="leaflet.css"/>
+<link rel="stylesheet" href="markercluster.css"/>
+<link rel="stylesheet" href="markercluster-default.css"/>
 <script src="leaflet.js"></script>
+<script src="markercluster.js"></script>
 <script src="landmarks.js"></script>
 <script src="archive.js"></script>
 <script src="books-extras.js"></script>
@@ -231,12 +234,36 @@ function popupHTML(f) {
   `;
 }
 
+// Marker-cluster groups so overlapping pins fan out (spiderfy) on click.
+const clusterOpts = {
+  maxClusterRadius: 5,
+  showCoverageOnHover: false,
+  spiderfyOnMaxZoom: true,
+  zoomToBoundsOnClick: true,
+  spiderfyDistanceMultiplier: 1.6,
+  iconCreateFunction: function(cluster) {
+    const n = cluster.getChildCount();
+    return L.divIcon({
+      html: '<div style="background:rgba(58,43,21,0.85);color:#f3ead5;border:2px solid #f3ead5;border-radius:50%;width:24px;height:24px;line-height:20px;text-align:center;font-family:Georgia,serif;font-weight:700;font-size:12px;box-shadow:0 1px 3px rgba(0,0,0,0.5);">' + n + '</div>',
+      className: '', iconSize: [24, 24],
+    });
+  },
+};
+const dorpatCluster = L.markerClusterGroup(clusterOpts);
+const archiveCluster = L.markerClusterGroup(clusterOpts);
+const landmarkCluster = L.markerClusterGroup(clusterOpts);
+const extrasCluster = L.markerClusterGroup(clusterOpts);
+
 FEATURES.forEach(f => {
   const m = L.marker([f.lat, f.lon], { icon: makeIcon(f.confidence), title: f.title });
   m.bindPopup(popupHTML(f), { maxWidth: 360 });
-  m.addTo(map);
+  dorpatCluster.addLayer(m);
   markers[f.id] = m;
 });
+dorpatCluster.addTo(map);
+archiveCluster.addTo(map);
+landmarkCluster.addTo(map);
+extrasCluster.addTo(map);
 
 // ---- City landmarks layer ----
 const SEAGOV_IMG = 'https://www.seattle.gov/Images/Departments/Neighborhoods/HistoricPreservation/Landmarks/';
@@ -280,6 +307,7 @@ LANDMARKS.forEach((lm, i) => {
   m.bindPopup(landmarkPopup(lm), { maxWidth: 320 });
   landmarkMarkers[i] = m;
 });
+// landmark markers are added to landmarkCluster only when toggled on (see render())
 
 // ---- Dorpat web archive layer ----
 const archiveIconAddr = L.divIcon({
@@ -404,9 +432,9 @@ function render() {
     if (match) {
       xCount++;
       xItems.push({ idx: i, e });
-      if (!map.hasLayer(mk)) mk.addTo(map);
-    } else if (map.hasLayer(mk)) {
-      map.removeLayer(mk);
+      if (!extrasCluster.hasLayer(mk)) extrasCluster.addLayer(mk);
+    } else if (extrasCluster.hasLayer(mk)) {
+      extrasCluster.removeLayer(mk);
     }
   }
 
@@ -421,9 +449,9 @@ function render() {
     if (match) {
       dCount++;
       dItems.push(f);
-      if (!map.hasLayer(mk)) mk.addTo(map);
-    } else if (map.hasLayer(mk)) {
-      map.removeLayer(mk);
+      if (!dorpatCluster.hasLayer(mk)) dorpatCluster.addLayer(mk);
+    } else if (dorpatCluster.hasLayer(mk)) {
+      dorpatCluster.removeLayer(mk);
     }
   }
 
@@ -438,9 +466,9 @@ function render() {
     if (match) {
       aCount++;
       if (q) aItems.push({ idx: i, a });
-      if (!map.hasLayer(mk)) mk.addTo(map);
-    } else if (map.hasLayer(mk)) {
-      map.removeLayer(mk);
+      if (!archiveCluster.hasLayer(mk)) archiveCluster.addLayer(mk);
+    } else if (archiveCluster.hasLayer(mk)) {
+      archiveCluster.removeLayer(mk);
     }
   }
 
@@ -455,9 +483,9 @@ function render() {
     if (match) {
       lCount++;
       if (q) lItems.push({ idx: i, lm });
-      if (!map.hasLayer(mk)) mk.addTo(map);
-    } else if (map.hasLayer(mk)) {
-      map.removeLayer(mk);
+      if (!landmarkCluster.hasLayer(mk)) landmarkCluster.addLayer(mk);
+    } else if (landmarkCluster.hasLayer(mk)) {
+      landmarkCluster.removeLayer(mk);
     }
   }
 
